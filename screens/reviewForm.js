@@ -31,7 +31,7 @@ export default function ReviewForm({ addReview }) {
                 {props => (
                     <ImageBackground source={require('../assets/game_bg.png')} style={styles.container} >
                         <Text style={styles.text}>Add new game</Text>
-                        <Text style={globalStyles.titleText}>Enter the game title</Text>
+                        <Text style={globalStyles.titleInput}>Enter the game title</Text>
                         <TextInput
                             style={globalStyles.input}
                             placeholder='Review title'
@@ -40,7 +40,7 @@ export default function ReviewForm({ addReview }) {
                             onBlur={props.handleBlur('title')}
                         />
                         <Text style={globalStyles.errorText}>{props.touched.title && props.errors.title}</Text>
-                        <Text style={globalStyles.titleText}>Enter the game body</Text>
+                        <Text style={globalStyles.titleInput}>Enter the review body</Text>
                         <TextInput
                             multiline
                             style={globalStyles.input}
@@ -50,7 +50,7 @@ export default function ReviewForm({ addReview }) {
                             onBlur={props.handleBlur('body')}
                         />
                         <Text style={globalStyles.errorText}>{props.touched.body && props.errors.body}</Text>
-                        <Text style={globalStyles.titleText}>Choose the game rating</Text>
+                        <Text style={globalStyles.titleInput}>Choose the game rating</Text>
                         <TextInput
                             style={globalStyles.input}
                             placeholder='Rating (1-5)'
