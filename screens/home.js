@@ -1,7 +1,8 @@
 import React, { useState } from "react";
-import { StyleSheet, View, Text, FlatList, TouchableOpacity } from 'react-native';
+import { StyleSheet, View, Text, FlatList, TouchableOpacity, ImageBackground, Modal } from 'react-native';
 import { globalStyles } from '../styles/global';
 import Card from '../shared/card';
+import { MaterialIcons } from '@expo/vector-icons';
 
 export default function Home({ navigation }) {
 
@@ -9,6 +10,7 @@ export default function Home({ navigation }) {
     //     navigation.navigate('ReviewDetails');
     //     //navigation.push('ReviewDetails');
     // }
+    const [modelOpen, setModelOpen] = useState(false);
 
     const [reviews, setReviews] = useState([
         { title: 'Zelda, Breath of Fresh Air', rating: 5, body: 'NERØ', key: '1' },
@@ -17,9 +19,25 @@ export default function Home({ navigation }) {
     ]);
 
     return (
-        <View style={globalStyles.container}>
+        <ImageBackground source={require('../assets/game_bg.png')} style={globalStyles.container}>
             {/* <Text style={globalStyles.titleText}>Home Screen</Text>
             <Button title='go to review dets' color='#333' onPress={pressHandler}/> */}
+            <Modal visible={modelOpen} animationType='slide'>
+                <View style={styles.modelContent}>
+                    <MaterialIcons
+                        name='close'
+                        size={24}
+                        style={{...styles.modalToggle, ...styles.modelClose}}
+                        onPress={() => setModelOpen(false)}
+                    />
+                </View>
+            </Modal>
+            <MaterialIcons
+                name='add'
+                size={24}
+                style={styles.modalToggle}
+                onPress={() => setModelOpen(true)}
+            />
             <FlatList
                 data={reviews}
                 renderItem={({ item }) =>
@@ -30,6 +48,24 @@ export default function Home({ navigation }) {
                     </TouchableOpacity>
                 }
             />
-        </View>
+        </ImageBackground>
     )
 }
+
+const styles = StyleSheet.create({
+    modalToggle: {
+        marginBottom: 10,
+        borderWidth: 1,
+        borderColor: '#f2f2f2',
+        padding: 10,
+        borderRadius: 10,
+        alignSelf: 'center'
+    },
+    modalClose: {
+        marginTop: 10,
+        marginBottom: 0,
+    },
+    modalContent: {
+        flex: 1,
+    }
+})
