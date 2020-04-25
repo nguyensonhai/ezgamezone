@@ -7,10 +7,10 @@ import * as yup from 'yup';
 const reviewSchema = yup.object({
     title: yup.string()
         .required()
-        .min(1),
+        .min(5),
     body: yup.string()
         .required()
-        .min(4),
+        .min(10),
     rating: yup.string()
         .required()
         .test('is-num-1-6', ' Rating must be a number 1 - 5', (val) => {
@@ -37,6 +37,7 @@ export default function ReviewForm({ addReview }) {
                             placeholder='Review title'
                             onChangeText={props.handleChange('title')}
                             values={props.values.title}
+                            onBlur={props.handleBlur('title')}
                         />
                         <Text style={globalStyles.errorText}>{props.touched.title && props.errors.title}</Text>
                         <Text style={globalStyles.titleText}>Enter the game body</Text>
@@ -46,6 +47,7 @@ export default function ReviewForm({ addReview }) {
                             placeholder='Review body'
                             onChangeText={props.handleChange('body')}
                             values={props.values.body}
+                            onBlur={props.handleBlur('body')}
                         />
                         <Text style={globalStyles.errorText}>{props.touched.body && props.errors.body}</Text>
                         <Text style={globalStyles.titleText}>Choose the game rating</Text>
@@ -55,6 +57,7 @@ export default function ReviewForm({ addReview }) {
                             onChangeText={props.handleChange('rating')}
                             values={props.values.rating}
                             keyboardType="numeric"
+                            onBlur={props.handleBlur('rating')}
                         />
                         <Text style={{ ...globalStyles.errorText, ...styles.bottom }}>{ props.touched.rating && props.errors.rating}</Text>
                         <Button title='submit' color='#333' onPress={props.handleSubmit} />
