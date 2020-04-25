@@ -3,6 +3,7 @@ import { StyleSheet, View, Text, FlatList, TouchableOpacity, ImageBackground, Mo
 import { globalStyles } from '../styles/global';
 import Card from '../shared/card';
 import { MaterialIcons } from '@expo/vector-icons';
+import ReviewForm from './reviewForm';
 
 export default function Home({ navigation }) {
 
@@ -30,6 +31,7 @@ export default function Home({ navigation }) {
                         style={{...styles.modalToggle, ...styles.modelClose}}
                         onPress={() => setModelOpen(false)}
                     />
+                    <ReviewForm/>
                 </View>
             </Modal>
             <MaterialIcons
