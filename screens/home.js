@@ -10,9 +10,10 @@ export default function Home({ navigation }) {
     const [modelOpen, setModelOpen] = useState(false);
 
     const [reviews, setReviews] = useState([
-        { title: 'Zelda, Breath of Fresh Air', rating: 5, body: 'NERØ', key: '1' },
-        { title: 'Gotta Catch Them All (again)', rating: 4, body: 'NERØ', key: '2' },
-        { title: 'Not So "Final" Fantasy', rating: 3, body: 'NERØ', key: '3' }
+        { title: 'Zelda, Breath of Fresh Air', rating: 5, body: ' Created by NERØ', key: '1' },
+        { title: 'God of War', rating: 5, body: ' Created by NERØ', key: '2' },
+        { title: 'Gotta Catch Them All (again)', rating: 4, body: 'Created by NERØ', key: '3' },
+        { title: 'Not So "Final" Fantasy', rating: 3, body: ' Created byNERØ', key: '4' }
     ]);
 
     const addReview = (review) => {
@@ -30,8 +31,8 @@ export default function Home({ navigation }) {
                     <View style={styles.modelContent}>
                         <MaterialIcons
                             name='close'
-                            size={24}
-                            style={{ ...styles.modalToggle, ...styles.modelClose }}
+                            size={30}
+                            style={styles.modalToggleClose}
                             onPress={() => setModelOpen(false)}
                         />
                         <ReviewForm addReview={addReview} />
@@ -40,8 +41,8 @@ export default function Home({ navigation }) {
             </Modal>
             <MaterialIcons
                 name='add'
-                size={24}
-                style={styles.modalToggle}
+                size={30}
+                style={styles.modalToggleOpen}
                 onPress={() => setModelOpen(true)}
             />
             <FlatList
@@ -59,19 +60,20 @@ export default function Home({ navigation }) {
 }
 
 const styles = StyleSheet.create({
-    modalToggle: {
+    modalToggleClose: {
         justifyContent: 'center',
         alignItems: 'center',
-        marginBottom: 10,
-        borderWidth: 1,
-        borderColor: '#f2f2f2',
-        padding: 10,
-        borderRadius: 10,
-        alignSelf: 'center',
-    },
-    modalClose: {
-        marginTop: 20,
+        marginTop: 5,
         marginBottom: 0,
+        padding: 10,
+        alignSelf: 'flex-end',
+    },
+    modalToggleOpen: {
+        justifyContent: 'center',
+        alignItems: 'center',
+        marginBottom: 5,
+        padding: 5,
+        alignSelf: 'center',
     },
     modalContent: {
         flex: 1,

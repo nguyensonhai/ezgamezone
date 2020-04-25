@@ -15,7 +15,7 @@ export default function ReviewDetails({ navigation }) {
         <ImageBackground source={require('../assets/game_bg.png')} style={globalStyles.container}>
             <Card>
                 <Text style={globalStyles.titleText}>{navigation.getParam('title')}</Text>
-                <Text style={globalStyles.titleText}>Created by: {navigation.getParam('body')}</Text>
+                <Text style={globalStyles.titleText}>{navigation.getParam('body')}</Text>
                 <View style={styles.rating}>
                     <Text style={globalStyles.titleText}>Game rating: </Text>
                     <Image source={images.ratings[rating]} />
