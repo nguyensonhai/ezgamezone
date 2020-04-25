@@ -1,19 +1,20 @@
 import React from "react";
-import { View, Button, TextInput, Text } from 'react-native';
+import { StyleSheet, View, Button, TextInput, Text, ImageBackground } from 'react-native';
 import { globalStyles } from '../styles/global';
 import { Formik } from 'formik';
 
 export default function ReviewForm() {
     return (
-        <View>
+        <View source={require('../assets/game_bg.png')} >
             <Formik
                 initialValues={{ title: '', body: '', rating: '', }}
                 onSubmit={(values) => {
                     console.log(values);
                 }}
             >
-                {(props) => (
-                    <View style={globalStyles.container}>
+                {props => (
+                    <ImageBackground source={require('../assets/game_bg.png')}  style={styles.container} >
+                        <Text style={styles.text}>Add new game</Text>
                         <Text style={globalStyles.titleText}>Input title</Text>
                         <TextInput
                             style={globalStyles.input}
@@ -31,15 +32,33 @@ export default function ReviewForm() {
                         />
                         <Text style={globalStyles.titleText}>Input rating</Text>
                         <TextInput
-                            style={globalStyles.input}
+                            style={{...globalStyles.input, ...styles.bottomInput}}
                             placeholder='Review rating (1-5)'
                             onChangeText={props.handleChange('rating')}
                             values={props.values.rating}
                         />
                         <Button title='submit' color='#333' onPress={props.handleSubmit}/>
-                    </View>
+                    </ImageBackground>
                 )}
             </Formik>
         </View>
     )
 }
+
+const styles = StyleSheet.create({
+    container: {
+        padding: 30,
+        height: '100%'
+    },
+    bottomInput: {
+        marginBottom: 30,
+    },
+    text: {
+        fontFamily: 'nunito-bold',
+        fontSize: 38,
+        color: '#333',
+        alignSelf:'center',
+        padding: 20,
+        paddingBottom: 60,
+    }
+})
