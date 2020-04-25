@@ -21,7 +21,6 @@ export default function Header({ navigation, title }) {
 const styles = StyleSheet.create({
     header: {
         width: Dimensions.get('screen').width,
-        height: '100%',
         flexDirection: 'row',
         flex: 1,
         alignItems: 'center',
@@ -31,7 +30,6 @@ const styles = StyleSheet.create({
         fontSize: 20,
         color: '#fff',
         letterSpacing: 1,
-        height: '100%',
         alignItems: "center",
     },
     icon: {

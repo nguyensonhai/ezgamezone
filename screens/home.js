@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { StyleSheet, View, Text, FlatList, TouchableOpacity } from 'react-native';
 import { globalStyles } from '../styles/global';
+import Card from '../shared/card';
 
 export default function Home({ navigation }) {
 
@@ -10,9 +11,9 @@ export default function Home({ navigation }) {
     // }
 
     const [reviews, setReviews] = useState([
-        { title: 'Zelda, Breath of Fresh Air', rating: 5, body: 'lorem upsum', key: '1' },
-        { title: 'Gotta Catch Them All (again)', rating: 4, body: 'lorem upsum', key: '2' },
-        { title: 'Not So "Final" Fantasy', rating: 3, body: 'lorem upsum', key: '3' }
+        { title: 'Zelda, Breath of Fresh Air', rating: 5, body: 'NERØ', key: '1' },
+        { title: 'Gotta Catch Them All (again)', rating: 4, body: 'NERØ', key: '2' },
+        { title: 'Not So "Final" Fantasy', rating: 3, body: 'NERØ', key: '3' }
     ]);
 
     return (
@@ -23,7 +24,9 @@ export default function Home({ navigation }) {
                 data={reviews}
                 renderItem={({ item }) =>
                     <TouchableOpacity onPress={() => navigation.navigate('ReviewDetails', item)}>
-                        <Text style={globalStyles.titleText}>{item.title}</Text>
+                        <Card>
+                            <Text style={globalStyles.titleText}>{item.title}</Text>
+                        </Card>
                     </TouchableOpacity>
                 }
             />
