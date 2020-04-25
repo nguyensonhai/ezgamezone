@@ -3,26 +3,26 @@ import { StyleSheet, View, Button, TextInput, Text, ImageBackground } from 'reac
 import { globalStyles } from '../styles/global';
 import { Formik } from 'formik';
 
-export default function ReviewForm() {
+export default function ReviewForm({ addReview }) {
     return (
         <View source={require('../assets/game_bg.png')} >
             <Formik
                 initialValues={{ title: '', body: '', rating: '', }}
                 onSubmit={(values) => {
-                    console.log(values);
+                    addReview(values);
                 }}
             >
                 {props => (
-                    <ImageBackground source={require('../assets/game_bg.png')}  style={styles.container} >
+                    <ImageBackground source={require('../assets/game_bg.png')} style={styles.container} >
                         <Text style={styles.text}>Add new game</Text>
-                        <Text style={globalStyles.titleText}>Input title</Text>
+                        <Text style={globalStyles.titleText}>Enter the game title</Text>
                         <TextInput
                             style={globalStyles.input}
                             placeholder='Review title'
                             onChangeText={props.handleChange('title')}
                             values={props.values.title}
                         />
-                        <Text style={globalStyles.titleText}>Input body</Text>
+                        <Text style={globalStyles.titleText}>Enter the game body</Text>
                         <TextInput
                             multiline
                             style={globalStyles.input}
@@ -30,14 +30,15 @@ export default function ReviewForm() {
                             onChangeText={props.handleChange('body')}
                             values={props.values.body}
                         />
-                        <Text style={globalStyles.titleText}>Input rating</Text>
+                        <Text style={globalStyles.titleText}>Choose the game rating</Text>
                         <TextInput
-                            style={{...globalStyles.input, ...styles.bottomInput}}
-                            placeholder='Review rating (1-5)'
+                            style={{ ...globalStyles.input, ...styles.bottomInput }}
+                            placeholder='Rating (1-5)'
                             onChangeText={props.handleChange('rating')}
                             values={props.values.rating}
+                            keyboardType="numeric"
                         />
-                        <Button title='submit' color='#333' onPress={props.handleSubmit}/>
+                        <Button title='submit' color='#333' onPress={props.handleSubmit} />
                     </ImageBackground>
                 )}
             </Formik>
@@ -57,7 +58,7 @@ const styles = StyleSheet.create({
         fontFamily: 'nunito-bold',
         fontSize: 38,
         color: '#333',
-        alignSelf:'center',
+        alignSelf: 'center',
         padding: 20,
         paddingBottom: 60,
     }

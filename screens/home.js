@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { StyleSheet, View, Text, FlatList, TouchableOpacity, ImageBackground, Modal } from 'react-native';
+import { StyleSheet, View, Text, FlatList, TouchableOpacity, ImageBackground, Modal, TouchableWithoutFeedback, Keyboard } from 'react-native';
 import { globalStyles } from '../styles/global';
 import Card from '../shared/card';
 import { MaterialIcons } from '@expo/vector-icons';
@@ -7,10 +7,6 @@ import ReviewForm from './reviewForm';
 
 export default function Home({ navigation }) {
 
-    // const pressHandler = () => {
-    //     navigation.navigate('ReviewDetails');
-    //     //navigation.push('ReviewDetails');
-    // }
     const [modelOpen, setModelOpen] = useState(false);
 
     const [reviews, setReviews] = useState([
@@ -19,20 +15,28 @@ export default function Home({ navigation }) {
         { title: 'Not So "Final" Fantasy', rating: 3, body: 'NERØ', key: '3' }
     ]);
 
+    const addReview = (review) => {
+        review.key = Math.random().toString();
+        setReviews((current) => {
+            return [review, ...current]
+        });
+        setModelOpen(false);
+    }
+
     return (
         <ImageBackground source={require('../assets/game_bg.png')} style={globalStyles.container}>
-            {/* <Text style={globalStyles.titleText}>Home Screen</Text>
-            <Button title='go to review dets' color='#333' onPress={pressHandler}/> */}
             <Modal visible={modelOpen} animationType='slide'>
-                <View style={styles.modelContent}>
-                    <MaterialIcons
-                        name='close'
-                        size={24}
-                        style={{...styles.modalToggle, ...styles.modelClose}}
-                        onPress={() => setModelOpen(false)}
-                    />
-                    <ReviewForm/>
-                </View>
+                <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+                    <View style={styles.modelContent}>
+                        <MaterialIcons
+                            name='close'
+                            size={24}
+                            style={{ ...styles.modalToggle, ...styles.modelClose }}
+                            onPress={() => setModelOpen(false)}
+                        />
+                        <ReviewForm addReview={addReview} />
+                    </View>
+                </TouchableWithoutFeedback>
             </Modal>
             <MaterialIcons
                 name='add'
