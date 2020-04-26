@@ -1,9 +1,9 @@
 import React from "react";
-import { StyleSheet, View, Button, TextInput, Text, ImageBackground } from 'react-native';
+import { StyleSheet, View, Button, TextInput, Text, ImageBackground, ScrollView } from 'react-native';
 import { globalStyles } from '../styles/global';
 import { Formik } from 'formik';
 import * as yup from 'yup';
-
+import FlatButton from '../shared/button'
 const reviewSchema = yup.object({
     title: yup.string()
         .required()
@@ -20,51 +20,53 @@ const reviewSchema = yup.object({
 
 export default function ReviewForm({ addReview }) {
     return (
-        <View source={require('../assets/game_bg.png')} >
-            <Formik
-                initialValues={{ title: '', body: '', rating: '', }}
-                validationSchema={reviewSchema}
-                onSubmit={(values) => {
-                    addReview(values);
-                }}
-            >
-                {props => (
-                    <ImageBackground source={require('../assets/game_bg.png')} style={styles.container} >
-                        <Text style={styles.text}>Add new game</Text>
-                        <Text style={globalStyles.titleInput}>Enter the game title</Text>
-                        <TextInput
-                            style={globalStyles.input}
-                            placeholder='Review title'
-                            onChangeText={props.handleChange('title')}
-                            values={props.values.title}
-                            onBlur={props.handleBlur('title')}
-                        />
-                        <Text style={globalStyles.errorText}>{props.touched.title && props.errors.title}</Text>
-                        <Text style={globalStyles.titleInput}>Enter the review body</Text>
-                        <TextInput
-                            multiline
-                            style={globalStyles.input}
-                            placeholder='Review body'
-                            onChangeText={props.handleChange('body')}
-                            values={props.values.body}
-                            onBlur={props.handleBlur('body')}
-                        />
-                        <Text style={globalStyles.errorText}>{props.touched.body && props.errors.body}</Text>
-                        <Text style={globalStyles.titleInput}>Choose the game rating</Text>
-                        <TextInput
-                            style={globalStyles.input}
-                            placeholder='Rating (1-5)'
-                            onChangeText={props.handleChange('rating')}
-                            values={props.values.rating}
-                            keyboardType="numeric"
-                            onBlur={props.handleBlur('rating')}
-                        />
-                        <Text style={{ ...globalStyles.errorText, ...styles.bottom }}>{ props.touched.rating && props.errors.rating}</Text>
-                        <Button title='submit' color='#333' onPress={props.handleSubmit} />
-                    </ImageBackground>
-                )}
-            </Formik>
-        </View>
+        <ScrollView>
+            <View source={require('../assets/game_bg.png')} >
+                <Formik
+                    initialValues={{ title: '', body: '', rating: '', }}
+                    validationSchema={reviewSchema}
+                    onSubmit={(values) => {
+                        addReview(values);
+                    }}
+                >
+                    {props => (
+                        <ImageBackground source={require('../assets/game_bg.png')} style={styles.container} >
+                            <Text style={styles.text}>Add new game</Text>
+                            <Text style={globalStyles.titleInput}>Enter the game title</Text>
+                            <TextInput
+                                style={globalStyles.input}
+                                placeholder='Review title'
+                                onChangeText={props.handleChange('title')}
+                                values={props.values.title}
+                                onBlur={props.handleBlur('title')}
+                            />
+                            <Text style={globalStyles.errorText}>{props.touched.title && props.errors.title}</Text>
+                            <Text style={globalStyles.titleInput}>Enter the review body</Text>
+                            <TextInput
+                                multiline
+                                style={globalStyles.input}
+                                placeholder='Review body'
+                                onChangeText={props.handleChange('body')}
+                                values={props.values.body}
+                                onBlur={props.handleBlur('body')}
+                            />
+                            <Text style={globalStyles.errorText}>{props.touched.body && props.errors.body}</Text>
+                            <Text style={globalStyles.titleInput}>Choose the game rating</Text>
+                            <TextInput
+                                style={globalStyles.input}
+                                placeholder='Rating (1-5)'
+                                onChangeText={props.handleChange('rating')}
+                                values={props.values.rating}
+                                keyboardType="numeric"
+                                onBlur={props.handleBlur('rating')}
+                            />
+                            <Text style={{ ...globalStyles.errorText, ...styles.bottom }}>{props.touched.rating && props.errors.rating}</Text>
+                            <FlatButton text='submit' onPress={props.handleSubmit} />
+                        </ImageBackground>
+                    )}
+                </Formik>
+            </View>
+        </ScrollView>
     )
 }
 

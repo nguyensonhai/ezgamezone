@@ -13,7 +13,7 @@ export default function Home({ navigation }) {
         { title: 'Zelda, Breath of Fresh Air', rating: 5, body: ' Created by NERØ', key: '1' },
         { title: 'God of War', rating: 5, body: ' Created by NERØ', key: '2' },
         { title: 'Gotta Catch Them All (again)', rating: 4, body: 'Created by NERØ', key: '3' },
-        { title: 'Not So "Final" Fantasy', rating: 3, body: ' Created byNERØ', key: '4' }
+        { title: 'Not So "Final" Fantasy', rating: 3, body: ' Created by NERØ', key: '4' }
     ]);
 
     const addReview = (review) => {

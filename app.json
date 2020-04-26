@@ -23,6 +23,8 @@
     ],
     "ios": {
       "supportsTablet": true
-    }
+    },
+    "description": "Created by NERØ",
+    "githubUrl": "https://github.com/nguyensonhai/gamezone"
   }
 }
