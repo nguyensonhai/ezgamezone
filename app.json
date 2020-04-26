@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "Ezgamezone",
-    "slug": "ezgamezone",
+    "name": "gamezone",
+    "slug": "gamezone",
     "platforms": [
       "ios",
       "android",
