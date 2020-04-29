@@ -1,28 +1,27 @@
 {
   "expo": {
-    "name": "gamezone",
-    "slug": "gamezone",
-    "platforms": [
-      "ios",
-      "android",
-      "web"
-    ],
-    "version": "1.0.0",
+    "name": "Ez Gamezone",
+    "slug": "ez-gamezone",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
+    "version": "1.0.0",
+    "ios": {
+      "bundleIdentifier": "com.eztech.gamezone",
+      "buildNumber": "1.0.0"
+    },
     "splash": {
       "image": "./assets/splash.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
-    "updates": {
-      "fallbackToCacheTimeout": 0
-    },
-    "assetBundlePatterns": [
-      "**/*"
+    "platforms": [
+      "ios",
+      "android",
+      "web"
     ],
-    "ios": {
-      "supportsTablet": true
+    "android": {
+      "package": "com.eztech.gamezone",
+      "versionCode": 1
     },
     "description": "Created by NERØ",
     "githubUrl": "https://github.com/nguyensonhai/gamezone"
