@@ -1,12 +1,12 @@
 {
   "expo": {
     "name": "Ez Gamezone",
-    "slug": "ez-gamezone",
+    "slug": "ezgamezone",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "version": "1.0.0",
     "ios": {
-      "bundleIdentifier": "com.eztech.gamezone",
+      "bundleIdentifier": "com.eztech.ezgamezone",
       "buildNumber": "1.0.0"
     },
     "splash": {
@@ -14,16 +14,12 @@
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
-    "platforms": [
-      "ios",
-      "android",
-      "web"
-    ],
+    "platforms": ["ios", "android", "web"],
     "android": {
-      "package": "com.eztech.gamezone",
+      "package": "com.eztech.ezgamezone",
       "versionCode": 1
     },
-    "description": "Created by NERØ",
-    "githubUrl": "https://github.com/nguyensonhai/gamezone"
+    "description": "Developed by NERØ",
+    "githubUrl": "https://github.com/nguyensonhai/ezgamezone"
   }
 }
